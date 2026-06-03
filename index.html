@@ -1,165 +1,185 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Be My Valentine ❤️</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be My Valentine ❤️</title>
 
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background: #ffe6f0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        text-align: center;
-        margin: 0;
-      }
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffe6f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      overflow: hidden;
+    }
 
-      .container {
-        padding: 20px;
-      }
+    .container {
+      padding: 20px;
+    }
 
-      h1 {
-        color: #ff3366;
-      }
+    h1 {
+      color: #ff3366;
+    }
 
-      .buttons {
-        margin-top: 30px;
-      }
+    .buttons {
+      margin-top: 30px;
+    }
 
-      button {
-        border: none;
-        cursor: pointer;
-        border-radius: 10px;
-        color: white;
-        font-size: 20px;
-        transition: all 0.3s ease;
-      }
+    button {
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color: white;
+      font-size: 20px;
+      transition: all 0.3s ease;
+    }
 
-      #yesBtn {
-        background: #28a745;
-        padding: 15px 30px;
-      }
+    #yesBtn {
+      background: #28a745;
+      padding: 15px 30px;
+    }
 
-      #noBtn {
-        background: #dc3545;
-        padding: 15px 30px;
-        margin-left: 10px;
-      }
+    #noBtn {
+      background: #dc3545;
+      padding: 15px 30px;
+      margin-left: 10px;
+    }
+  </style>
+</head>
 
-      #result {
-        margin-top: 20px;
-        font-size: 28px;
-        color: #ff3366;
-        font-weight: bold;
-      }
-    </style>
-  </head>
+<body>
 
-  <body>
-    <div class="container">
-      <img
-        id="bearGif"
-        src="https://media.tenor.com/ZhNxfL0GmoMAAAAm/mocha-bear-hearts.webp"
-        alt="Cute Bear"
-        style="width: 250px; border-radius: 15px"
-      />
+  <div class="container">
+    <img
+      id="bearGif"
+      src="https://media.tenor.com/ZhNxfL0GmoMAAAAm/mocha-bear-hearts.webp"
+      alt="Cute Bear"
+      style="width:250px; border-radius:15px;"
+    >
 
-      <h1>NJI NKHETFEK GHEDWA 3omri? ❤️</h1>
+    <h1>NJI NKHETFEK GHEDWA 3OMRI? ❤️</h1>
 
-      <div class="buttons">
-        <button id="yesBtn">Yes 💖</button>
-        <button id="noBtn">No 😢</button>
-      </div>
-
-      <div id="result" class="result"></div>
+    <div class="buttons">
+      <button id="yesBtn">Yes 💖</button>
+      <button id="noBtn">No 😢</button>
     </div>
+  </div>
 
-    <script>
-      const yesBtn = document.getElementById("yesBtn");
-      const noBtn = document.getElementById("noBtn");
-      const result = document.getElementById("result");
-      const bearGif = document.getElementById("bearGif");
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const bearGif = document.getElementById("bearGif");
 
-      let scale = 1;
+    let scale = 1;
+    let index = 0;
+    let noClicks = 0;
 
-      const messages = [
-        "Are you sure? 🥺",
-        "Really sure? 😭",
-        "Think again ❤️",
-        "Please? 🥹",
-        "Last chance 😢",
-        "You can't resist forever 😏",
-      ];
+    const messages = [
+      "Are you sure? 🥺",
+      "Really sure? 😭",
+      "Think again ❤️",
+      "Please? 🥹",
+      "Last chance 😢",
+      "aha 😭",
+      "ahaaa 💔",
+      "Still no? 🥲",
+      "Whyyyy? 😩",
+      "One more chance ❤️",
+      "Too late 😭"
+    ];
 
-      let index = 0;
+    noBtn.addEventListener("click", () => {
+      noClicks++;
 
-      noBtn.addEventListener("click", () => {
-        scale += 0.3;
-        yesBtn.style.transform = `scale(${scale})`;
+      // Agrandir le bouton YES
+      scale += 0.25;
+      yesBtn.style.transform = `scale(${scale})`;
 
-        noBtn.textContent = messages[index % messages.length];
+      // Au 11e clic le bouton disparaît
+      if (noClicks >= 11) {
+        noBtn.textContent = "Too late 😭";
 
-        // changement du gif
-        if (index === 0) {
-          bearGif.src =
-            "https://media.tenor.com/vQcyHEn-rV4AAAAm/bubu-dudu-stickers.webp";
-        } else if (index === 2) {
-          bearGif.src = "https://media.tenor.com/PIaJrC68f6IAAAAm/teddy2.webp";
-        } else if (index === 4) {
-          bearGif.src =
-            "https://media.tenor.com/HQR0DYdWKTAAAAAm/dudu-king.webp";
-        } else if (index === 6) {
-          bearGif.src =
-            "https://media.tenor.com/hzbQakIKSooAAAAm/heart-broken-sad.webp";
-        } else if (index === 8) {
-          bearGif.src =
-            "https://media.tenor.com/sWXhCC4A2woAAAAm/bubu-bubu-dudu.webp";
-        } else if (index === 9) {
-          bearGif.src =
-            "https://media.tenor.com/uzTknCqPVBgAAAAm/tooji-bubududu.webp";
-        }
-        index++;
-      });
+        setTimeout(() => {
+          noBtn.style.display = "none";
+        }, 700);
 
-      yesBtn.addEventListener("click", () => {
-        document.body.innerHTML = `
-    <div style="
-        height:100vh;
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-        background:#ffe4e1;
-        text-align:center;
-        font-family:Arial,sans-serif;
-    ">
-        <img
+        return;
+      }
+
+      // Changer le texte
+      noBtn.textContent = messages[index];
+
+      // Déplacer le bouton
+      const maxX = window.innerWidth - noBtn.offsetWidth;
+      const maxY = window.innerHeight - noBtn.offsetHeight;
+
+      noBtn.style.position = "fixed";
+      noBtn.style.left = Math.random() * maxX + "px";
+      noBtn.style.top = Math.random() * maxY + "px";
+
+      // Changer les GIFs
+      if (index === 0) {
+        bearGif.src =
+          "https://media.tenor.com/vQcyHEn-rV4AAAAm/bubu-dudu-stickers.webp";
+      } else if (index === 2) {
+        bearGif.src =
+          "https://media.tenor.com/PIaJrC68f6IAAAAm/teddy2.webp";
+      } else if (index === 4) {
+        bearGif.src =
+          "https://media.tenor.com/HQR0DYdWKTAAAAAm/dudu-king.webp";
+      } else if (index === 6) {
+        bearGif.src =
+          "https://media.tenor.com/hzbQakIKSooAAAAm/heart-broken-sad.webp";
+      } else if (index === 8) {
+        bearGif.src =
+          "https://media.tenor.com/sWXhCC4A2woAAAAm/bubu-bubu-dudu.webp";
+      }
+
+      index++;
+    });
+
+    yesBtn.addEventListener("click", () => {
+      document.body.innerHTML = `
+        <div style="
+          height:100vh;
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+          align-items:center;
+          background:#ffe4e1;
+          text-align:center;
+          font-family:Arial,sans-serif;
+        ">
+          <img
             src="https://media.tenor.com/qS6vW0jD9QYAAAAM/bearish-bearish-af.gif"
             alt="Cute Bear"
             style="width:280px;border-radius:20px;"
-        >
+          >
 
-        <h1 style="
+          <h1 style="
             color:#ff1493;
             font-size:55px;
             margin-top:20px;
-        ">
+          ">
             YAYYYY ❤️🥰
-        </h1>
+          </h1>
 
-        <p style="
+          <p style="
             font-size:28px;
             color:#444;
             margin-top:10px;
-        ">
+          ">
             You made me the happiest person ever! 💖🌹
-        </p>
-    </div>
-    `;
-      });
-    </script>
-  </body>
+          </p>
+        </div>
+      `;
+    });
+  </script>
+
+</body>
 </html>
